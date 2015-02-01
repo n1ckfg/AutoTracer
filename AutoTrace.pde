@@ -8,19 +8,20 @@ int numDrawerReps = 2;//scattered points per point--use sparingly
 int numRepsMax = 100; // draw loops--to taste
 int numReps = 0;
 boolean ready = false;
-String brushFile = "brush2.png";
+String brushFile = "brush4.png";
 PImage brush;
-int brushSize = 18;
-int brushSizeMin = 5;
-int brushSizeMax = 42;
-float brushRandom = 2;
+float brushSizeOrig = 18;
+float brushSize = brushSizeOrig;
+float brushSizeMin = 5;
+float brushSizeMax = 50;
 float leakRandom = 0.2; //0-1
-float brushScatter = 4;
 PGraphics alphaImg;
 PGraphics alphaImgOrig;
 boolean firstRun = true;
 boolean cleanOutlines = true;
 boolean useBase = true;
+boolean shrink = true;
+float shrinkAmount = 0.99;
 
 int counter = 0;
 
@@ -55,20 +56,19 @@ void draw() {
         alphaImg.pushMatrix();
         alphaImg.translate(x, y);
         alphaImg.rotate(theta);
-     float bs;
-     if (random(1)<leakRandom) {
-         bs = random(brushSizeMin,brushSizeMax);
-      } else {
-         bs = brushSize;
-      }
-        //alphaImg.stroke(c);
-        //alphaImg.line(0, 0, 0, random(5, 15));
-        doBrush(new PVector(0, 0), c, bs, false);//line(0, 0, 0, random(5, 15));
+         float bs;
+         if (random(1)<leakRandom) {
+           bs = random(brushSizeMin,brushSizeMax);
+         } else {
+           bs = brushSize;
+        }
+        doBrushSimple(new PVector(0, 0), c, bs);//line(0, 0, 0, random(5, 15));
         alphaImg.popMatrix();
       }
     }
     alphaImg.endDraw();
     image(alphaImg,0,0);
+    if (shrink && numReps > (numRepsMax/2) && brushSize > brushSizeMin) brushSize *= shrinkAmount;
     numReps++;
   } else {
     if (cleanOutlines) {  
@@ -91,6 +91,7 @@ void draw() {
       saveGraphics(alphaImg,false); //don't exit
       counter++;
       numReps = 0;
+      brushSize = brushSizeOrig;
       nextImage(counter);
       prepGraphics();
     } else {
@@ -124,9 +125,9 @@ void prepGraphics() {
     alphaImgOrig.endDraw();
 }
 
-void doBrush(PVector p, color c, float _b, boolean scatter) {
+void doBrushSimple(PVector p, color c, float _bs) {
   alphaImg.tint(c);
   alphaImg.imageMode(CENTER);
-  alphaImg.image(brush, 0, 0, _b, _b);
+  alphaImg.image(brush, p.x, p.y, _bs, _bs);
 }
 
