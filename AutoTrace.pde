@@ -4,17 +4,20 @@
 PImage img;
 
 int numDrawers = 500; //points drawn per frame--use lots
-int numDrawerReps = 2;//scattered points per point--use sparingly
+int numDrawerReps = 1;//scattered points per point--use sparingly
 int numRepsMax = 100; // draw loops--to taste
 int numReps = 0;
 boolean ready = false;
 String brushFile = "brush4.png";
 PImage brush;
-float brushSizeOrig = 18;
+PVector p = new PVector(0,0);
+int alphaOffset = 50;
+float brushSizeOrig = 30;
 float brushSize = brushSizeOrig;
 float brushSizeMin = 5;
 float brushSizeMax = 50;
 float leakRandom = 0.2; //0-1
+float scatter = 4;
 PGraphics alphaImg;
 PGraphics alphaImgOrig;
 boolean firstRun = true;
@@ -62,7 +65,16 @@ void draw() {
          } else {
            bs = brushSize;
         }
-        doBrushSimple(new PVector(0, 0), c, bs);//line(0, 0, 0, random(5, 15));
+        if (j==0) {
+          //centered on first pass
+          p = new PVector(0,0);
+        } else {
+          //pick a direction on second pass;
+          p.x = j * random(-scatter,scatter);
+          p.y = j * random(-scatter,scatter);
+          println(p);
+        }
+        doBrushSimple(p, c, bs);//line(0, 0, 0, random(5, 15));
         alphaImg.popMatrix();
       }
     }
@@ -126,7 +138,12 @@ void prepGraphics() {
 }
 
 void doBrushSimple(PVector p, color c, float _bs) {
-  alphaImg.tint(c);
+  float r = red(c);
+  float g = green(c);
+  float b = blue(c);
+  float a = alpha(c) - alphaOffset;
+  if(a<0) a=0;
+  alphaImg.tint(color(r,g,b,a));
   alphaImg.imageMode(CENTER);
   alphaImg.image(brush, p.x, p.y, _bs, _bs);
 }
