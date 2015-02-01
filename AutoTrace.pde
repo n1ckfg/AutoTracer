@@ -57,7 +57,7 @@ void draw() {
         //color c = color(img.pixels[index], 127);
         color c = img.pixels[index];
         if (alpha(c) != 0) {
-          c = color(c,127);
+          //c = color(c,127);
           float theta = map(brightness(c), 0, 255, 0, TWO_PI);
           alphaImg.pushMatrix();
           alphaImg.translate(x, y);

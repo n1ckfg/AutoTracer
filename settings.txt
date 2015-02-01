@@ -17,7 +17,7 @@ Brush File
 brush5.png
 
 Brush Alpha Decrease
-100
+200
 
 Brush Size
 20
@@ -35,7 +35,7 @@ Leak Chance
 0.1
 
 Clean Outlines
-false
+true
 
 Use Base Image
 false
