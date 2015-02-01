@@ -49,7 +49,13 @@ void countFrames(String usePath) {
       exit();
     }else{
       // We need this because Processing 2, unlike Processing 1, will not automatically wait to let you pick a folder!
-      println("FOUND " + imgNames.size() + " image(s)");
+      String s;
+      if (imgNames.size() == 1) {
+        s = "image";
+      } else {
+        s = "images";
+      }
+      println("FOUND " + imgNames.size() + " " + s);
       filesLoaded = true;
     }
 }
@@ -124,3 +130,7 @@ String zeroPadding(int _val, int _maxVal){
   return nf(_val,q.length());
 }
 
+float tween(float v1, float v2, float e) {
+  v1 += (v2-v1)/e;
+  return v1;
+}

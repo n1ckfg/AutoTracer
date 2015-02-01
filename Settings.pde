@@ -7,15 +7,20 @@ class Settings {
       settings = new Data();
       settings.load(_s);
       for (int i=0;i<settings.data.length;i++) {
-        /*
-        if (settings.data[i].equals("Stage Width")) sW = setInt(settings.data[i+1]);
-        if (settings.data[i].equals("Stage Height")) sH = setInt(settings.data[i+1]);
-        if (settings.data[i].equals("Stage Depth")) sD = setInt(settings.data[i+1]);
-        if (settings.data[i].equals("Framerate")) fps = setInt(settings.data[i+1]);
-        if (settings.data[i].equals("OSC Receive Port")) receivePort = setInt(settings.data[i+1]);
-        if (settings.data[i].equals("Fullscreen")) fullScreen = setBoolean(settings.data[i+1]);
-        if (settings.data[i].equals("Syphon Local Echo")) localEcho = setBoolean(settings.data[i+1]);
-        */
+        if (settings.data[i].equals("Points Per Pass")) numDrawers = setInt(settings.data[i+1]);
+        if (settings.data[i].equals("Strokes Per Point")) numDrawerReps = setInt(settings.data[i+1]);
+        if (settings.data[i].equals("Stroke Length")) numStrokes = setInt(settings.data[i+1]);
+        if (settings.data[i].equals("Passes Per Image")) numRepsMax = setInt(settings.data[i+1]);
+        if (settings.data[i].equals("Brush File")) brushFile = setString(settings.data[i+1]);
+        if (settings.data[i].equals("Brush Alpha Decrease")) alphaDecrease = setInt(settings.data[i+1]);
+        if (settings.data[i].equals("Brush Size")) brushSizeOrig = setFloat(settings.data[i+1]);
+        if (settings.data[i].equals("Brush Minimum")) brushSizeMin = setFloat(settings.data[i+1]);
+        if (settings.data[i].equals("Brush Maximum")) brushSizeMax = setFloat(settings.data[i+1]);
+        if (settings.data[i].equals("Leak Chance")) leakRandom = setFloat(settings.data[i+1]);
+        if (settings.data[i].equals("Scatter")) scatter = setFloat(settings.data[i+1]);
+        if (settings.data[i].equals("Clean Outlines")) cleanOutlines = setBoolean(settings.data[i+1]);
+        if (settings.data[i].equals("Use Base Image")) useBase = setBoolean(settings.data[i+1]);
+        if (settings.data[i].equals("Brush Shrink Amount")) shrinkAmount = setFloat(settings.data[i+1]);     
        }
     } 
     catch(Exception e) {
