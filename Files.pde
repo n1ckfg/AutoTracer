@@ -4,7 +4,7 @@ String openFilePath = "render";
 String folderPath;
 File dataFolder;
 ArrayList imgNames;
-String fileName = "foo";
+String fileName = "frame";
 boolean filesLoaded = false;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~

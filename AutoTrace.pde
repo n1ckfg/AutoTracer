@@ -9,7 +9,7 @@ int numStrokes = 10;
 int numRepsMax = 200; // draw loops--to taste
 int numReps = 0;
 boolean ready = false;
-String brushFile = "brush5.png";
+String brushFile = "brush5";
 PImage brush;
 PVector p = new PVector(0, 0);
 int alphaDecrease = 50;
@@ -33,7 +33,7 @@ void setup() {
   nextImage(counter);
   size(img.width, img.height);
 
-  brush = loadImage(brushFile);
+  brush = loadImage(brushFile+".png");
   brush.filter(INVERT);
 }
 

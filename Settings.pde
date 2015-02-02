@@ -11,7 +11,8 @@ class Settings {
         if (settings.data[i].equals("Strokes Per Point")) numDrawerReps = setInt(settings.data[i+1]);
         if (settings.data[i].equals("Stroke Length")) numStrokes = setInt(settings.data[i+1]);
         if (settings.data[i].equals("Passes Per Image")) numRepsMax = setInt(settings.data[i+1]);
-        if (settings.data[i].equals("Brush File")) brushFile = setString(settings.data[i+1]);
+        if (settings.data[i].equals("Save Filename")) fileName = setString(settings.data[i+1]);
+        if (settings.data[i].equals("Brush Filename")) brushFile = setString(settings.data[i+1]);
         if (settings.data[i].equals("Brush Alpha Decrease")) alphaDecrease = setInt(settings.data[i+1]);
         if (settings.data[i].equals("Brush Size")) brushSizeOrig = setFloat(settings.data[i+1]);
         if (settings.data[i].equals("Brush Minimum")) brushSizeMin = setFloat(settings.data[i+1]);

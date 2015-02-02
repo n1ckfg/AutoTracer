@@ -13,8 +13,11 @@ Stroke Length
 Scatter
 4
 
-Brush File
-brush5.png
+Save Filename
+frame
+
+Brush Filename
+brush5
 
 Brush Alpha Decrease
 200
@@ -35,7 +38,7 @@ Leak Chance
 0.1
 
 Clean Outlines
-true
+false
 
 Use Base Image
 false
