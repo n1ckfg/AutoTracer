@@ -31,8 +31,8 @@ void setup() {
   Settings settings = new Settings("settings.txt");
   loadFiles();
   nextImage(counter);
-  size(img.width, img.height);
-
+  size(50,50);
+  surface.setSize(img.width, img.height);
   brush = loadImage(brushFile+".png");
   brush.filter(INVERT);
 }
@@ -164,4 +164,3 @@ void doBrushSimple(PVector p, color c, float _bs) {
   alphaImg.imageMode(CENTER);
   alphaImg.image(brush, p.x, p.y, _bs, _bs);
 }
-

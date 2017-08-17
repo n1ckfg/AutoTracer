@@ -1,4 +1,4 @@
-import java.awt.Desktop;
+//import java.awt.Desktop;
 
 String openFilePath = "render";
 String folderPath;
@@ -73,6 +73,7 @@ void filesLoadedChecker() {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //reveal folder, processing 2 version
 
+/*
 void openAppFolderHandler(){
   if(System.getProperty("os.name").equals("Mac OS X")){
     try{
@@ -87,6 +88,7 @@ void openAppFolderHandler(){
     }catch(Exception e){ }
   }
 }
+*/
 
 //run at startup if you want to use app data folder--not another folder.
 //This accounts for different locations and OS conventions
@@ -114,7 +116,7 @@ void saveGraphics(PGraphics pg,boolean last){
     println("Failed to save file.");  
   }
   if(last) {
-    openAppFolderHandler();
+    //openAppFolderHandler();
     exit();
   }
 }
